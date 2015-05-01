@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>DribbbleFolio</title>
+    <!-- Bootstrap + Font Awesome + Main CSS -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- customize this file if needed -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <header>
+                <div class="row">
+                    <div class="navbar">
+                        <div class="navbar-header">
+                            <button class="navbar-toggle collapsed" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">DRIBBBLEFOLIO</a>
+                        </div>
+
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Resume</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+
+                            <ul class="nav navbar-nav social">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-github"></i></a> </li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <h1 class="intro"><span>Hello</span> <span>I’m</span> Your Name here <span>, Designer &amp; Coder </span></h1>
+                    </div>
+                </div>
+            </header>
+
+            <div class="row grid-list-wrapper no-gutter-space" id="shots">
+                <img class="loading" src="assets/svg/loading-spin.svg" alt="Loading">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <nav class="nav-footer">
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Resume</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+
+                <ul>
+                    <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
+                    <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
+                    <li><a href="#"> <i class="fa fa-github"></i> </a> </li>
+                    <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
+                    <li><a href="#"> <i class="fa fa-envelope"></i> </a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="assets/js/dribbblefolio.js"></script>
+    <script>
+        DribbbleFolio.init({
+            username: 'your_dribbble_username',
+            counter: 18
+        });
+
+        document.querySelector('.navbar-toggle').addEventListener('click', function (e) {
+            var target = this.dataset.target;
+            document.querySelector(target).classList.toggle("collapse");
+        });
+    </script>
+</body>
+</html>
