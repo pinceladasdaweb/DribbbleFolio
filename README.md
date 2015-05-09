@@ -18,9 +18,17 @@ DribbbleFolio.init({
 
 In file [`request.php`](request.php) you must populate the variable $token with the Token of your app created in [Dribbble API](http://developer.dribbble.com/v1/).
 
+## How to customize JS/CSS
+
+Open files in assets/ and customize as you wish. Then run the following command in the terminal to make the JS/CSS minification:
+
+```bash
+$ grunt
+```
+
 ## Contributing
 
-Check [CONTRIBUTING.md](https://github.com/pinceladasdaweb/Nodegram/blob/master/CONTRIBUTING.md) for more information.
+Check [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
 
 ## History
 
