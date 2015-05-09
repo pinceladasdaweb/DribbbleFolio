@@ -1,7 +1,12 @@
 <?php
-require_once('./api/Dribbble.class.php');
+require_once './vendor/autoload.php';
 
-$user    = isset($_GET['username']) ? $_GET['username'] : NULL;
+$classLoader = new SplClassLoader('DribbbleFolio', 'vendor');
+$classLoader->register();
+
+use DribbbleFolio\Dribbble;
+
+$user    = isset($_GET['username']) ? $_GET['username'] : null;
 $counter = isset($_GET['per_page']) ? $_GET['per_page'] : 18;
 $token   = '';
 
