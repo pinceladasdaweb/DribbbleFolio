@@ -64,6 +64,8 @@
                 self  = this;
 
             xhttp.open('GET', path, true);
+            xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhttp.setRequestHeader('Content-type', 'application/json');
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4) {
                     if (this.status >= 200 && this.status < 400) {
