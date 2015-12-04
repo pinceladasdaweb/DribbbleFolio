@@ -1,7 +1,7 @@
 {
     "name": "DribbbleFolio",
     "description": "Dribbble Portfolio Page developed with Vanilla JS",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "author": "Pedro Rogério",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,8 +9,8 @@
     "devDependencies": {
         "grunt": "~0.4.5",
         "grunt-contrib-watch": "~0.6.1",
-        "grunt-contrib-cssmin": "~0.12.2",
-        "grunt-contrib-uglify": "~0.9.1"
+        "grunt-contrib-cssmin": "~0.14.0",
+        "grunt-contrib-uglify": "~0.11.0"
     },
     "keywords": [
         "dribbble",
