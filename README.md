@@ -7,16 +7,16 @@
 I created a [Vanilla JS](http://vanilla-js.com/) version based on the original [DribbbleFolio](https://dribbble.com/shots/2035170-DribbbleFolio-Dribbble-Portfolio-HTML-Template-Free-Download).
 
 ## How to use?
-DribbbleFolio is a [Vanilla JS](http://vanilla-js.com/) plugin with no dependancies. Open the [`index.html`](index.html) file and fill javascript variable with your username:
+DribbbleFolio is a [Vanilla JS](http://vanilla-js.com/) plugin with no dependencies. Open the [`index.html`](index.html) file and fill javascript variable with your username:
 
 ```javascript
-DribbbleFolio.init({
+DribbbleFolio({
     username: 'your_dribbble_username',
     counter: 18
 });
 ```
 
-In file [`request.php`](request.php) you must populate the variable $token with the Token of your app created in [Dribbble API](http://developer.dribbble.com/v1/).
+In file [`config.php`](config/config.php) you must populate the variable token with the Token of your app created in [Dribbble API](http://developer.dribbble.com/v1/).
 
 ## How to customize JS/CSS
 
