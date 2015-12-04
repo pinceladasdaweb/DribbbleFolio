@@ -11,13 +11,26 @@
 }(this, function () {
     "use strict";
 
+    if (!(Function.prototype.hasOwnProperty('bind'))) {
+        Function.prototype.bind = function () {
+            var fn = this, context = arguments[0], args = Array.prototype.slice.call(arguments, 1);
+            return function () {
+                return fn.apply(context, args.concat(Array.prototype.slice.call(arguments)));
+            };
+        };
+    }
+    
     var DribbbleFolio = function (options) {
         if (!this || !(this instanceof DribbbleFolio)) {
             return new DribbbleFolio(options);
         }
 
-        if (typeof options === 'string') {
-            options = { key : options };
+        if (!options) {
+            options = {};
+        }
+
+        if (!options.username) {
+            throw 'Please, provide a username!';
         }
 
         this.username  = options.username;
@@ -26,10 +39,6 @@
         this.endpoint  = './request.php';
 
         this.fetch();
-    };
-
-    DribbbleFolio.init = function (options) {
-        return new DribbbleFolio(options);
     };
 
     DribbbleFolio.prototype = {
@@ -42,7 +51,7 @@
 
             this.loading();
 
-            this.getJSON(endpoint + this.param(data), this.attach);
+            this.getJSON(endpoint + this.param(data), this.attach.bind(this));
         },
         param: function (obj) {
             var encodedString = '',
@@ -60,17 +69,21 @@
             return encodedString;
         },
         getJSON: function (path, callback) {
-            var xhttp = new XMLHttpRequest(),
-                self  = this;
+            var xhttp = new XMLHttpRequest();
 
             xhttp.open('GET', path, true);
             xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             xhttp.setRequestHeader('Content-type', 'application/json');
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4) {
-                    if (this.status >= 200 && this.status < 400) {
-                        var json = JSON.parse(this.responseText);
-                        callback.call(self, json);
+                    if ((this.status >= 200 && this.status < 300) || this.status === 304) {
+                        var response = '';
+                        try {
+                            response = JSON.parse(this.responseText);
+                        } catch (err) {
+                            response = this.responseText;
+                        }
+                        callback.call(this, response);
                     } else {
                         throw new Error(this.status + " - " + this.statusText);
                     }
