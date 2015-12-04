@@ -21,7 +21,7 @@
  */
 class SplClassLoader
 {
-    private $_fileExtension = '.php';
+    private $_fileExtension = '.class.php';
     private $_namespace;
     private $_includePath;
     private $_namespaceSeparator = '\\';
