@@ -19,7 +19,7 @@
             };
         };
     }
-    
+
     var DribbbleFolio = function (options) {
         if (!this || !(this instanceof DribbbleFolio)) {
             return new DribbbleFolio(options);
@@ -51,7 +51,7 @@
 
             this.loading();
 
-            this.getJSON(endpoint + this.param(data), this.attach.bind(this));
+            this.getJSON(endpoint + this.param(data), this.attach.bind(this), this.failure.bind(this));
         },
         param: function (obj) {
             var encodedString = '',
@@ -68,7 +68,7 @@
 
             return encodedString;
         },
-        getJSON: function (path, callback) {
+        getJSON: function (path, success, fail) {
             var xhttp = new XMLHttpRequest();
 
             xhttp.open('GET', path, true);
@@ -77,15 +77,11 @@
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4) {
                     if ((this.status >= 200 && this.status < 300) || this.status === 304) {
-                        var response = '';
-                        try {
-                            response = JSON.parse(this.responseText);
-                        } catch (err) {
-                            response = this.responseText;
-                        }
-                        callback.call(this, response);
+                        var response = JSON.parse(this.responseText);
+
+                        success.call(this, response);
                     } else {
-                        throw new Error(this.status + " - " + this.statusText);
+                        fail.call(this, this.responseText);
                     }
                 }
             };
@@ -111,8 +107,7 @@
             }
         },
         shot: function (data) {
-            var self         = this,
-                projectUrl   = data.html_url,
+            var projectUrl   = data.html_url,
                 projectName  = document.createTextNode(data.title),
                 projectTitle = data.title,
                 projectImg   = data.images.hidpi,
@@ -147,7 +142,23 @@
             }
         },
         attach: function (data) {
-            this.shots(data);
+            if (data.status === '404' || data.message === 'Bad credentials.') {
+                this.failure();
+            } else {
+                this.shots(data);
+            }
+        },
+        failure: function (data) {
+            var loading  = document.querySelector('.loading'),
+                elements = document.createDocumentFragment(),
+                error    = document.createTextNode('An error ocurred. Try again later.'),
+                p        = this.create('p', {className: 'alert alert-danger response-error'});
+
+            p.appendChild(error);
+            elements.appendChild(p);
+
+            this.container.removeChild(loading);
+            this.container.appendChild(elements);
         }
     };
 
