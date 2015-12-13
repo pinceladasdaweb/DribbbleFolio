@@ -1,5 +1,17 @@
 <?php
+
 namespace DribbbleFolio;
+
+/**
+ * Dribbble Portfolio.
+ *
+ * @package   Dribbble
+ * @author    Pedro Rogério <pinceladasdaweb@hotmail.com>
+ * @copyright 2015 Pedro Rogério <pinceladasdaweb@hotmail.com>
+ * @license   https://opensource.org/licenses/MIT The MIT License (MIT)
+ * @version   Release: 0.0.6
+ * @link      https://github.com/pinceladasdaweb/DribbbleFolio
+ */
 
 class Dribbble
 {
@@ -7,7 +19,7 @@ class Dribbble
     const ENDPOINT_USERS      = '/users';
     const TIMEOUT_DEFAULT_SEC = 30;
 
-    protected $_apiRoot      = 'https://api.dribbble.com/v1';
+    protected $_apiRoot       = 'https://api.dribbble.com/v1';
     protected $_token;
 
     public function __construct($token)
